@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Navbar, Nav, NavItem, Glyphicon, NavDropdown } from 'react-bootstrap'
 import classnames from 'classnames'
 
+import PluginInjectionSite from '~/components/PluginInjectionSite'
 import NotificationHub from '~/components/Notifications/Hub'
 import ProfileMenu from '+/views/ProfileMenu'
 import RulesChecker from '+/views/RulesChecker'
@@ -80,7 +81,9 @@ class Header extends React.Component {
             </RulesChecker>
             {this.renderLogoutButton()}
           </Nav>
-          <Nav pullRight className="bp-navbar-module-buttons" />
+          <Nav pullRight>
+            <PluginInjectionSite site="navbar-buttons" />
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
     )

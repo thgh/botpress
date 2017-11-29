@@ -57,7 +57,7 @@ class Layout extends React.Component {
           toggleLicenseModal={this.props.toggleLicenseModal}
         />
         <AboutComponent opened={this.props.aboutModalOpened} />
-        <PluginInjectionSite site={'overlay'} />
+        <PluginInjectionSite site="overlay" />
         <HelpButton />
       </div>
     )
