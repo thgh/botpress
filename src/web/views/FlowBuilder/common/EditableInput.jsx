@@ -30,20 +30,20 @@ export default class EditableInput extends Component {
     }
   }
 
-  onChanged(event) {
+  onChanged = event => {
     if (event.target.value !== this.props.value) {
       this.update(event.target.value)
     }
   }
 
-  onKeyDown(event) {
+  onKeyDown = event => {
     if (event.keyCode === 13) {
       // Enter
       event.target.blur()
     }
   }
 
-  onBlur(event) {
+  onBlur = event => {
     if (!this.props.value.length) {
       this.update(this.props.defaultValue || '')
     }
@@ -63,9 +63,9 @@ export default class EditableInput extends Component {
         style={{ width: inputWidth }}
         autocomplete="off"
         value={this.props.value || this.props.defaultValue}
-        onBlur={::this.onBlur}
-        onChange={::this.onChanged}
-        onKeyDown={::this.onKeyDown}
+        onBlur={this.onBlur}
+        onChange={this.onChanged}
+        onKeyDown={this.onKeyDown}
       />
     )
   }

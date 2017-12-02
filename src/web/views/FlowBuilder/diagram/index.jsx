@@ -104,13 +104,13 @@ export default class FlowBuilder extends Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this.diagramWidget).addEventListener('mousedown', ::this.onDiagramClick)
-    ReactDOM.findDOMNode(this.diagramWidget).addEventListener('click', ::this.onDiagramClick)
+    ReactDOM.findDOMNode(this.diagramWidget).addEventListener('mousedown', this.onDiagramClick)
+    ReactDOM.findDOMNode(this.diagramWidget).addEventListener('click', this.onDiagramClick)
   }
 
   componentWillUnmount() {
-    ReactDOM.findDOMNode(this.diagramWidget).removeEventListener('mousedown', ::this.onDiagramClick)
-    ReactDOM.findDOMNode(this.diagramWidget).removeEventListener('click', ::this.onDiagramClick)
+    ReactDOM.findDOMNode(this.diagramWidget).removeEventListener('mousedown', this.onDiagramClick)
+    ReactDOM.findDOMNode(this.diagramWidget).removeEventListener('click', this.onDiagramClick)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -123,7 +123,7 @@ export default class FlowBuilder extends Component {
     }
   }
 
-  onDiagramClick(event) {
+  onDiagramClick = event => {
     const selectedNode = this.getSelectedNode()
     const currentNode = this.props.currentFlowNode
 
