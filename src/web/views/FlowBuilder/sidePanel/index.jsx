@@ -8,10 +8,7 @@ import StandardNode from './standardNode'
 const style = require('./style.scss')
 
 export default class SidePanel extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+  state = {}
 
   render() {
     if (this.props.currentFlowNode) {
