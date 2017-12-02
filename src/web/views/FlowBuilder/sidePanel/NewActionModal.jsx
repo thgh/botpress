@@ -144,10 +144,10 @@ export default class NewActionModal extends Component {
           <div>
             <Col sm={4}>The bot will:</Col>
             <Col sm={8}>
-              <Radio checked={this.state.actionType === 'message'} onChange={this.onChangeType.bind(this, 'message')}>
+              <Radio checked={this.state.actionType === 'message'} onChange={() => this.onChangeType('message')}>
                 💬 Say something
               </Radio>
-              <Radio checked={this.state.actionType === 'code'} onChange={this.onChangeType.bind(this, 'code')}>
+              <Radio checked={this.state.actionType === 'code'} onChange={() => this.onChangeType('code')}>
                 ⚡ Execute code
               </Radio>
             </Col>
