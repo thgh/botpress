@@ -44,7 +44,7 @@ class SelectContent extends Component {
     this.fetchContentItemsCount()
     this.props.fetchContentCategories()
 
-    this.props.container.querySelector('.modal').addEventListener('keyup', this.handleChangeActiveItem)
+    this.props.container.addEventListener('keyup', this.handleChangeActiveItem)
   }
 
   componentWillReceiveProps(newProps) {
@@ -76,6 +76,8 @@ class SelectContent extends Component {
       this.setState({ activeItemIndex: index > 0 ? index - 1 : index })
     } else if (e.key === 'ArrowDown') {
       this.setState({ activeItemIndex: index < SEARCH_RESULTS_LIMIT - 1 ? index + 1 : index })
+    } else if (e.key === 'Enter' && this.state.step === formSteps.PICK_CATEGORY) {
+      this.setCurrentCategory(this.props.categories[this.state.activeItemIndex].id)
     } else if (e.key === 'Enter') {
       this.handlePick(this.props.contentItems[this.state.activeItemIndex])
     }
@@ -155,11 +157,14 @@ class SelectContent extends Component {
           <a href="#" onClick={() => this.setCurrentCategory(null)} className="list-group-item list-group-item-action">
             All
           </a>
-          {categories.map(category => (
+          {categories.map((category, i) => (
             <a
               href="#"
+              key={i}
               onClick={() => this.setCurrentCategory(category.id)}
-              className="list-group-item list-group-item-action"
+              className={classnames('list-group-item', 'list-group-item-action', {
+                active: i === this.state.activeItemIndex
+              })}
             >
               {category.title}
             </a>
@@ -229,9 +234,10 @@ class SelectContent extends Component {
         />
         <hr />
         <div className="list-group">
-          {categories.map(category => (
+          {categories.map((category, i) => (
             <a
               href="#"
+              key={i}
               onClick={() => this.setState({ newItemCategory: category, newItemData: null })}
               className={`list-group-item list-group-item-action ${style.createItem}`}
             >
@@ -241,6 +247,7 @@ class SelectContent extends Component {
           {this.props.contentItems.map((contentItem, i) => (
             <a
               href="#"
+              key={i}
               className={`list-group-item list-group-item-action ${i === this.state.activeItemIndex ? 'active' : ''}`}
               onClick={() => this.handlePick(contentItem)}
             >

@@ -105,23 +105,26 @@ export default class ActionSection extends Component {
 
     return (
       <div>
-        <Panel collapsible defaultExpanded={true} header={header}>
-          {this.renderWait()}
-          {items.map((item, i) => (
-            <ActionItem className={style.item} text={item}>
-              <div className={style.actions}>
-                <a onClick={() => this.onEdit(i)}>Edit</a>
-                <a onClick={() => this.onRemoveAction(i)}>Remove</a>
-                {renderMoveUp(i)}
-                {renderMoveDown(i)}
-              </div>
-            </ActionItem>
-          ))}
-          <div className={style.actions}>
-            <Button className={style.addAction} onClick={handleAddAction}>
-              Add action
-            </Button>
-          </div>
+        <Panel collapsible defaultExpanded={true}>
+          <Panel.Heading>{header}</Panel.Heading>
+          <Panel.Body>
+            {this.renderWait()}
+            {items.map((item, i) => (
+              <ActionItem className={style.item} text={item} key={i}>
+                <div className={style.actions}>
+                  <a onClick={() => this.onEdit(i)}>Edit</a>
+                  <a onClick={() => this.onRemoveAction(i)}>Remove</a>
+                  {renderMoveUp(i)}
+                  {renderMoveDown(i)}
+                </div>
+              </ActionItem>
+            ))}
+            <div className={style.actions}>
+              <Button className={style.addAction} onClick={handleAddAction}>
+                Add action
+              </Button>
+            </div>
+          </Panel.Body>
         </Panel>
         <ActionModalForm
           show={this.state.showActionModalForm}

@@ -1,6 +1,8 @@
 import 'babel-polyfill'
 import React from 'expose-loader?React!react'
 import ReactDOM from 'expose-loader?ReactDOM!react-dom'
+import PropTypes from 'expose-loader?PropTypes!prop-types'
+import ReactBootstrap from 'expose-loader?ReactBootstrap!react-bootstrap'
 import { Provider } from 'react-redux'
 
 import store from './store'

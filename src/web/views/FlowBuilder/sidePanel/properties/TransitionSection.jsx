@@ -81,23 +81,26 @@ export default class TransitionSection extends Component {
 
     return (
       <div>
-        <Panel collapsible defaultExpanded={true} header={header}>
-          {items.map((item, i) => (
-            <ConditionItem className={style.item} condition={item} position={i}>
-              {renderType(item)}
-              <div className={style.actions}>
-                <a onClick={() => this.onEdit(i)}>Edit</a>
-                <a onClick={() => this.onRemove(i)}>Remove</a>
-                {renderMoveUp(i)}
-                {renderMoveDown(i)}
-              </div>
-            </ConditionItem>
-          ))}
-          <div className={style.actions}>
-            <Button className={style.addAction} onClick={handleAddAction}>
-              Add condition
-            </Button>
-          </div>
+        <Panel collapsible="true" defaultExpanded={true}>
+          <Panel.Heading>{header}</Panel.Heading>
+          <Panel.Body>
+            {items.map((item, i) => (
+              <ConditionItem className={style.item} condition={item} position={i} key={i}>
+                {renderType(item)}
+                <div className={style.actions}>
+                  <a onClick={() => this.onEdit(i)}>Edit</a>
+                  <a onClick={() => this.onRemove(i)}>Remove</a>
+                  {renderMoveUp(i)}
+                  {renderMoveDown(i)}
+                </div>
+              </ConditionItem>
+            ))}
+            <div className={style.actions}>
+              <Button className={style.addAction} onClick={handleAddAction}>
+                Add condition
+              </Button>
+            </div>
+          </Panel.Body>
         </Panel>
         <ConditionModalForm
           currentFlow={this.props.currentFlow}
