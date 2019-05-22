@@ -3,3 +3,8 @@ extensions/**
 test/**
 docs/**
 assets/**
+tests/**
+dev-bot/**
+.github/**
+*.map
+*.tgz
